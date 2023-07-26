@@ -30,6 +30,10 @@ body {
   background-color: #7AC100;
   border-radius: 12px;
   border: 0px;
+  cursor: pointer;
+}
+.button :hover {
+  opacity: 1;
 }
 
 .choice {
@@ -41,6 +45,7 @@ body {
   flex-direction: column;
   align-content: center;
   margin-top: 158px;
+  margin-bottom: 158px;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -73,9 +78,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .choice__button {
   width: 246px;
   height: 50px;
-  margin-left: 117px;
 }/*# sourceMappingURL=style.css.map */
