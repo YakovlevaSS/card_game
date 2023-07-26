@@ -32,9 +32,6 @@ body {
   border: 0px;
   cursor: pointer;
 }
-.button :hover {
-  opacity: 1;
-}
 
 .choice {
   background-color: #C2F5FF;
