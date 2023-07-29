@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "StratosSkyeng";
-    src: url("fonts/statosskyeng-v1.001/Web fonts/woff") format("woff");
+    src: url(./fonts/stratosskyengweb-regular.woff) format("woff");
     font-style: normal;
     font-weight: normal;
 }
@@ -33,9 +33,7 @@ body {
     border-radius: 12px;
     border: 0px;
     cursor: pointer;
-    :hover {
-        opacity: 1;
-      }
+    font-family: 'StratosSkyeng', sans-serif;
 }
 
 .choice {
@@ -63,13 +61,16 @@ body {
 
     &__items-wrap {
         display: flex;
-        gap: 24px;
-        justify-content: center;
         margin-top: 48px;
         margin-bottom: 67px;
+        gap: 24px;
     }
 
-    &__item {
+    &__items-wrap input[type=radio] {
+        display: none;
+    }
+
+    &__items-wrap label {
         width: 98px;
         height: 98px;
         border-radius: 12px;
@@ -83,6 +84,18 @@ body {
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        font-family: StratosSkyeng;
+
+    }
+
+    /* Checked */
+    &__items-wrap input[type=radio]:checked+label {
+        background: #7AC100;
+    }
+
+    /* Hover */
+    &__items-wrap label:hover {
+        border: 1px solid #0080C1;
     }
 
     &__button {
