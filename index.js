@@ -1,4 +1,4 @@
-//import { renderPlayingField } from "./component/renderPlayingField";
+import { renderPlayingField } from "./component/renderPlayingField.js";
 function renderChoicePage() {
     let appEl = document.querySelector(".app");
     const appHtml = `
@@ -33,7 +33,7 @@ function renderChoicePage() {
         for (const levelPoint of levelPoints) {
             if (levelPoint.checked) {
                 console.log(levelPoint.value);
-                //renderPlayingField(levelPoint, appEl)
+                renderPlayingField(levelPoint, appEl)
             };
         }
     })
