@@ -1,6 +1,6 @@
-import { renderPlayingField } from "./component/renderPlayingField.js";
+import { renderPlayingField } from './component/renderPlayingField.js'
 function renderChoicePage() {
-    let appEl = document.querySelector(".app");
+    let appEl = document.querySelector('.app')
     const appHtml = `
     <div class="wrap center">
     <form class="choice" id="form" method = "POST" action = "#">
@@ -22,20 +22,20 @@ function renderChoicePage() {
             Старт
         </button>
     </form>
-    </div>`;
-    appEl.innerHTML = appHtml;
-    const form = document.getElementById("form");
-    form.addEventListener("submit", (element) => {
-        element.preventDefault();
+    </div>`
+    appEl.innerHTML = appHtml
+    const form = document.getElementById('form')
+    form.addEventListener('submit', (element) => {
+        element.preventDefault()
 
-        let levelPoints = document.querySelectorAll(".choice__item")
+        let levelPoints = document.querySelectorAll('.choice__item')
 
         for (const levelPoint of levelPoints) {
             if (levelPoint.checked) {
-                console.log(levelPoint.value);
+                console.log(levelPoint.value)
                 renderPlayingField(levelPoint, appEl)
-            };
+            }
         }
     })
 }
-renderChoicePage();
+renderChoicePage()

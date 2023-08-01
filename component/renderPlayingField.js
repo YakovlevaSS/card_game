@@ -5,6 +5,6 @@ export function renderPlayingField(levelPoint, appEl) {
     <h2 class="game-field__title">${levelPoint.value} карточек
     </h2>
     </div>
-    </div>`;
-    appEl.innerHTML = appHtml;
+    </div>`
+    appEl.innerHTML = appHtml
 }

@@ -5,8 +5,8 @@
 }
 
 @font-face {
-    font-family: "StratosSkyeng";
-    src: url(./fonts/stratosskyengweb-regular.woff) format("woff");
+    font-family: 'StratosSkyeng';
+    src: url(./fonts/stratosskyengweb-regular.woff) format('woff');
     font-style: normal;
     font-weight: normal;
 }
@@ -22,14 +22,13 @@ body {
 }
 
 .button {
-
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
     letter-spacing: 0em;
     text-align: center;
-    color: #FFFFFF;
-    background-color: #7AC100;
+    color: #ffffff;
+    background-color: #7ac100;
     border-radius: 12px;
     border: 0px;
     cursor: pointer;
@@ -37,7 +36,7 @@ body {
 }
 
 .choice {
-    background-color: #C2F5FF;
+    background-color: #c2f5ff;
     width: 480px;
     height: 459px;
     border-radius: 12px;
@@ -66,7 +65,7 @@ body {
         gap: 24px;
     }
 
-    &__items-wrap input[type=radio] {
+    &__items-wrap input[type='radio'] {
         display: none;
     }
 
@@ -78,24 +77,23 @@ body {
         font-weight: 400;
         line-height: 72px;
         letter-spacing: 0px;
-        color: #0080C1;
-        background-color: #FFFFFF;
+        color: #0080c1;
+        background-color: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         font-family: StratosSkyeng;
-
     }
 
     /* Checked */
-    &__items-wrap input[type=radio]:checked+label {
-        background: #7AC100;
+    &__items-wrap input[type='radio']:checked + label {
+        background: #7ac100;
     }
 
     /* Hover */
     &__items-wrap label:hover {
-        border: 1px solid #0080C1;
+        border: 1px solid #0080c1;
     }
 
     &__button {
@@ -107,13 +105,13 @@ body {
     display: flex;
     justify-content: center;
 
-&__title {
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 48px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 52px;
-}
+    &__title {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 52px;
+    }
 }
