@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./component/cardArray.js":
+/*!********************************!*\
+  !*** ./component/cardArray.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   cardArray: () => (/* binding */ cardArray)\n/* harmony export */ });\nconst cardArray = [\r\n    `<img class=\"card-suit\" src=\"./img/10 бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/10 крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/10 пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/10 черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/6 бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/6 крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/6 пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/6 черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/7 бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/7 крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/7 пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/7 черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/8 бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/8 крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/8 пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/8 черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/9 бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/9 крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/9 пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/9 черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/валет бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/валет крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/валет пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/валет черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/дама бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/дама крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/дама пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/дама черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/король бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/король крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/король пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/король черви.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/туз бубны.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/туз крести.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/туз пики.png\">`,\r\n    `<img class=\"card-suit\" src=\"./img/туз черви.png\">`  \r\n]\n\n//# sourceURL=webpack://card_game/./component/cardArray.js?");
+
+/***/ }),
+
 /***/ "./component/renderPlayingField.js":
 /*!*****************************************!*\
   !*** ./component/renderPlayingField.js ***!
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   renderPlayingField: () => (/* binding */ renderPlayingField)\n/* harmony export */ });\nfunction renderPlayingField(levelPoint, appEl) {\n    const appHtml = `\n    <div class=\"wrap\">\n    <div class=\"game-field\">\n    <h2 class=\"game-field__title\">${levelPoint.value} карточек\n    </h2>\n    </div>\n    </div>`\n    appEl.innerHTML = appHtml\n}\n\n\n//# sourceURL=webpack://card_game/./component/renderPlayingField.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   renderPlayingField: () => (/* binding */ renderPlayingField)\n/* harmony export */ });\n/* harmony import */ var _cardArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardArray.js */ \"./component/cardArray.js\");\n\n\nfunction renderPlayingField(levelPoint, appEl) {\n    \n    let level = levelPoint.value;\n\n    const coverCardArr = [];\n    for (let index = 0; index < level; index++) {\n        coverCardArr.push(`<img src=\"./img/рубашка.png\">`)\n        console.log(coverCardArr);        \n    }\n    \n    const appHtml = `\n    <div class=\"wrap\">\n    <div class=\"game-field\">\n    <h2 class=\"game-field__title\">${levelPoint.value} карточек\n    </h2>\n    </div>\n    </div>`\n    appEl.innerHTML = appHtml\n}\n\n\n//# sourceURL=webpack://card_game/./component/renderPlayingField.js?");
 
 /***/ }),
 
