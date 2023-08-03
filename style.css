@@ -5,14 +5,14 @@
 }
 
 @font-face {
-  font-family: "StratosSkyeng";
-  src: url(./fonts/stratosskyengweb-regular.woff) format("woff");
+  font-family: StratosSkyeng;
+  src: url("./fonts/stratosskyengweb-regular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 body {
   background: #004980;
-  font-family: "StratosSkyeng", sans-serif;
+  font-family: StratosSkyeng, sans-serif;
 }
 
 .center {
@@ -29,14 +29,12 @@ body {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-  letter-spacing: 0em;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   background-color: #7ac100;
   border-radius: 12px;
-  border: 0px;
   cursor: pointer;
-  font-family: "StratosSkyeng", sans-serif;
+  font-family: StratosSkyeng, sans-serif;
   width: 246px;
   height: 50px;
 }
@@ -47,20 +45,18 @@ body {
   height: 459px;
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
   align-content: center;
   margin-top: 158px;
   margin-bottom: 158px;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   align-items: center;
-  /* Checked */
   /* Hover */
+  /* Checked */
 }
 .choice__title {
   font-size: 40px;
   font-weight: 400;
   line-height: 48px;
-  letter-spacing: 0em;
   text-align: center;
   color: #004980;
   margin-top: 52px;
@@ -81,33 +77,32 @@ body {
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
-  letter-spacing: 0px;
   color: #0080c1;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-family: StratosSkyeng;
-}
-.choice__items-wrap input[type=radio]:checked + label {
-  background: #7ac100;
 }
 .choice__items-wrap label:hover {
   border: 1px solid #0080c1;
+}
+.choice__items-wrap input[type=radio]:checked + label {
+  background: #7ac100;
 }
 
 .game-field {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 .game-field__title {
   font-size: 40px;
   font-weight: 400;
   line-height: 48px;
-  letter-spacing: 0em;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   margin-top: 52px;
 }
 
@@ -124,8 +119,7 @@ header {
   font-size: 16px;
   font-weight: 400;
   line-height: 32px;
-  letter-spacing: 0em;
-  color: #ffffff;
+  color: #fff;
   gap: 57px;
   justify-content: flex-end;
 }
@@ -133,13 +127,6 @@ header {
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
-  letter-spacing: 0px;
   text-align: left;
-  color: #ffffff;
-}
-
-.game-field {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
