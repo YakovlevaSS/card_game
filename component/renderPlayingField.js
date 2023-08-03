@@ -32,9 +32,10 @@ export function renderPlayingField(levelPoint, appEl) {
     const coverCards = document.querySelectorAll(".cover-card");
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
-            let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 );
+            let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
+            sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
             const suits = document.getElementById('suits'); 
-            suits.innerHTML = `${sortCardArray.slice(0, level)}`;
+            suits.innerHTML = `${sortCardArray}`;
         
             setTimeout(() => {
                 renderPlayingField(levelPoint, appEl);
