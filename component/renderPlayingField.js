@@ -4,15 +4,12 @@ export function renderPlayingField(levelPoint, appEl) {
     let level = levelPoint.value
 
     const coverCardArr = []
-    function getCoverArr() {
+
         for (let index = 0; index < level; index++) {
-            coverCardArr.push(`<img src="./img/рубашка.png">`)
+            coverCardArr.push(`<img src="./img/рубашка.png" class="cover-card">`)
         }
         console.log(coverCardArr)
-        return coverCardArr
-    }
-    getCoverArr()
-
+  
     const appHtml = `
     <div class="wrap">
     <header class="center-big">
@@ -25,8 +22,27 @@ export function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big">${coverCardArr}</div>
+    <div class="game-field center-big" id="suits">${coverCardArr}</div>
 </div>
 `
     appEl.innerHTML = appHtml
+    
+    const coverCards = document.querySelectorAll(".cover-card");
+    console.log(coverCards);
+    for (const coverCard of coverCards) {
+        coverCard.addEventListener('click', () => {
+            //let sortCardArray = cardArray.sort(() =>random() - 0.5 );
+            // document.getElementById('suits') = `${sortCardArray.slice(0, level)}`;
+            // let arr = [1, 2, 3];
+            // console.log(arr);
+        
+            setTimeout(() => {
+                renderPlayingField(levelPoint, appEl);
+               }, 2000);
+        })
+    }
+
+
+
+
 }
