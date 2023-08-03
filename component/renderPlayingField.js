@@ -8,7 +8,8 @@ export function renderPlayingField(levelPoint, appEl) {
         for (let index = 0; index < level; index++) {
             coverCardArr.push(`<img src="./img/рубашка.png" class="cover-card">`)
         }
-        console.log(coverCardArr)
+        console.log(coverCardArr);
+
   
     const appHtml = `
     <div class="wrap">
@@ -22,13 +23,13 @@ export function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${coverCardArr}</div>
+    <div class="game-field center-big" id="suits">${coverCardArr.join("")}</div>
 </div>
 `
     appEl.innerHTML = appHtml
     
+
     const coverCards = document.querySelectorAll(".cover-card");
-    console.log(coverCards);
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
             let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 );
