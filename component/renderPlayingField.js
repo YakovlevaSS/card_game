@@ -31,8 +31,8 @@ export function renderPlayingField(levelPoint, appEl) {
     console.log(coverCards);
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
-            //let sortCardArray = cardArray.sort(() =>random() - 0.5 );
-            // document.getElementById('suits') = `${sortCardArray.slice(0, level)}`;
+            let sortCardArray = cardArray.sort(() =>random() - 0.5 );
+            document.getElementById('suits') = `${sortCardArray.slice(0, level)}`;
             // let arr = [1, 2, 3];
             // console.log(arr);
         
