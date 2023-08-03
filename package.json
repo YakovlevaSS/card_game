@@ -7,7 +7,9 @@
         "dev": "webpack --mode development --watch",
         "format": "prettier --write ./",
         "lint:js": "eslint ./**/*.js",
-        "lint:css": "stylelint ./**/*.scss"
+        "lint:css": "stylelint ./**/*.scss",
+        "lint": "npm run lint:js && npm run lint:css",
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
@@ -19,6 +21,7 @@
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^8.9.0",
         "eslint-plugin-prettier": "^5.0.0",
+        "husky": "^8.0.3",
         "prettier": "^3.0.0",
         "stylelint": "^15.10.2",
         "stylelint-config-standard": "^34.0.0",
