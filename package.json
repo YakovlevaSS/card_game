@@ -9,7 +9,8 @@
         "lint:js": "eslint ./**/*.js",
         "lint:css": "stylelint ./**/*.scss",
         "lint": "npm run lint:js && npm run lint:css",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "build": "webpack"
     },
     "repository": {
         "type": "git",
@@ -18,10 +19,12 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.8.1",
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^8.9.0",
         "eslint-plugin-prettier": "^5.0.0",
+        "html-webpack-plugin": "^5.5.3",
         "husky": "^8.0.3",
         "prettier": "^3.0.0",
         "scss-loader": "^0.0.1",

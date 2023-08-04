@@ -6,7 +6,7 @@ export function renderPlayingField(levelPoint, appEl) {
     const coverCardArr = []
 
         for (let index = 0; index < level; index++) {
-            coverCardArr.push(`<img src="./img/рубашка.png" class="cover-card">`)
+            coverCardArr.push(`<img src="./static/img/рубашка.png" class="cover-card">`)
         }
         console.log(coverCardArr);
 
