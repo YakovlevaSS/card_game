@@ -2,6 +2,57 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./component/renderChoicePage.js":
+/*!***************************************!*\
+  !*** ./component/renderChoicePage.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderChoicePage: () => (/* binding */ renderChoicePage)
+/* harmony export */ });
+function renderChoicePage(appEl, renderPlayingField) {    
+    const appHtml = `
+    <div class="wrap center">
+    <form class="choice" id="form" method = "POST" action = "#">
+        <h2 class="choice__title">
+            Выбери<br>сложность
+        </h2>
+        <div class="choice__items-wrap">
+
+            <input class="choice__item" type="radio" id="radio1" name="radios" value="6" checked>
+            <label for="radio1">1</label>
+
+            <input class="choice__item" type="radio" id="radio2" name="radios" value="12">
+            <label for="radio2">2</label>
+
+            <input class="choice__item" type="radio" id="radio3" name="radios" value="18">
+            <label for="radio3">3</label>
+        </div>
+        <button class="button choice__button" type="submit">
+            Старт
+        </button>
+    </form>
+    </div>`
+    appEl.innerHTML = appHtml
+    const form = document.getElementById('form')
+    form.addEventListener('submit', (element) => {
+        element.preventDefault()
+
+        let levelPoints = document.querySelectorAll('.choice__item')
+
+        for (const levelPoint of levelPoints) {
+            if (levelPoint.checked) {
+                console.log(levelPoint.value)
+                renderPlayingField(levelPoint, appEl)
+            }
+        }
+    })
+}
+
+/***/ }),
+
 /***/ "./component/renderPlayingField.js":
 /*!*****************************************!*\
   !*** ./component/renderPlayingField.js ***!
@@ -132,47 +183,12 @@ var __webpack_exports__ = {};
   \******************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component/renderPlayingField.js */ "./component/renderPlayingField.js");
+/* harmony import */ var _component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/renderChoicePage.js */ "./component/renderChoicePage.js");
 
-function renderChoicePage() {
-    let appEl = document.querySelector('.app')
-    const appHtml = `
-    <div class="wrap center">
-    <form class="choice" id="form" method = "POST" action = "#">
-        <h2 class="choice__title">
-            Выбери<br>сложность
-        </h2>
-        <div class="choice__items-wrap">
 
-            <input class="choice__item" type="radio" id="radio1" name="radios" value="6" checked>
-            <label for="radio1">1</label>
 
-            <input class="choice__item" type="radio" id="radio2" name="radios" value="12">
-            <label for="radio2">2</label>
-
-            <input class="choice__item" type="radio" id="radio3" name="radios" value="18">
-            <label for="radio3">3</label>
-        </div>
-        <button class="button choice__button" type="submit">
-            Старт
-        </button>
-    </form>
-    </div>`
-    appEl.innerHTML = appHtml
-    const form = document.getElementById('form')
-    form.addEventListener('submit', (element) => {
-        element.preventDefault()
-
-        let levelPoints = document.querySelectorAll('.choice__item')
-
-        for (const levelPoint of levelPoints) {
-            if (levelPoint.checked) {
-                console.log(levelPoint.value)
-                ;(0,_component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.renderPlayingField)(levelPoint, appEl)
-            }
-        }
-    })
-}
-renderChoicePage()
+let appEl = document.querySelector('.app');
+(0,_component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__.renderChoicePage)(appEl, _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.renderPlayingField);
 
 })();
 
