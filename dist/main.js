@@ -181,6 +181,18 @@ function PlayApp(levelPoint, appEl) {
 }
 
 
+/***/ }),
+
+/***/ "./style.css":
+/*!*******************!*\
+  !*** ./style.css ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
 /***/ })
 
 /******/ 	});
@@ -246,13 +258,15 @@ var __webpack_exports__ = {};
   !*** ./index.js ***!
   \******************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component/renderPlayingField.js */ "./component/renderPlayingField.js");
-/* harmony import */ var _component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/renderChoicePage.js */ "./component/renderChoicePage.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./style.css");
+/* harmony import */ var _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/renderPlayingField.js */ "./component/renderPlayingField.js");
+/* harmony import */ var _component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component/renderChoicePage.js */ "./component/renderChoicePage.js");
+
 
 
 
 let appEl = document.querySelector('.app');
-(0,_component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__.renderChoicePage)(appEl, _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.PlayApp);
+(0,_component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_2__.renderChoicePage)(appEl, _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_1__.PlayApp);
 
 })();
 
