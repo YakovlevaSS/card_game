@@ -1,16 +1,17 @@
-// import { cardArray } from './cardArray.js'
+import { cardArray } from './cardArray.js'
+import { coverCardArr } from './cardArray.js'
 
 export function renderPlayingField(levelPoint, appEl) {
     let level = levelPoint.value
 
-    const coverCardArr = []
+    let sortCardArray = cardArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, level / 2)
+    sortCardArray = sortCardArray
+        .concat(sortCardArray)
+        .sort(() => Math.random() - 0.5)
+        .join('')
 
-        for (let index = 0; index < level; index++) {
-            coverCardArr.push(`<img src="./static/img/рубашка.png" class="cover-card">`)
-        }
-        console.log(coverCardArr);
-
-  
     const appHtml = `
     <div class="wrap">
     <header class="center-big">
@@ -23,30 +24,23 @@ export function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${coverCardArr.join("")}</div>
+    <div class="game-field center-big" id="suits">${sortCardArray}</div>
 </div>
 `
     appEl.innerHTML = appHtml
-    
-// function showSuitCard() {
-//              let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
-//             sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
-//             const suits = document.getElementById('suits'); 
-//             suits.innerHTML = `${sortCardArray}`;
-        
-//             setTimeout(() => {
-//                 showSuitCard();
-//                }, 5000);   
-// };
-// showSuitCard();
-    const coverCards = document.querySelectorAll(".cover-card");
+
+    function showCoverCard() {
+        let sortCoverCardArr = coverCardArr.slice(0, level).join('')
+        const suits = document.getElementById('suits')
+        suits.innerHTML = `${sortCoverCardArr}`
+    console.log("do");
+    }
+    setTimeout(showCoverCard, 5000);
+
+    const coverCards = document.querySelectorAll('.cover-card')
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
-            console.log("click");
+            console.log('click')
         })
     }
-
-
-
-
 }

@@ -2,6 +2,67 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./component/cardArray.js":
+/*!********************************!*\
+  !*** ./component/cardArray.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cardArray: () => (/* binding */ cardArray),
+/* harmony export */   coverCardArr: () => (/* binding */ coverCardArr)
+/* harmony export */ });
+const cardArray = [
+    `<img class="card-suit" src="./static/img/10 бубны.png">`,
+    `<img class="card-suit" src="./static/img/10 крести.png">`,
+    `<img class="card-suit" src="./static/img/10 пики.png">`,
+    `<img class="card-suit" src="./static/img/10 черви.png">`,
+    `<img class="card-suit" src="./static/img/6 бубны.png">`,
+    `<img class="card-suit" src="./static/img/6 крести.png">`,
+    `<img class="card-suit" src="./static/img/6 пики.png">`,
+    `<img class="card-suit" src="./static/img/6 черви.png">`,
+    `<img class="card-suit" src="./static/img/7 бубны.png">`,
+    `<img class="card-suit" src="./static/img/7 крести.png">`,
+    `<img class="card-suit" src="./static/img/7 пики.png">`,
+    `<img class="card-suit" src="./static/img/7 черви.png">`,
+    `<img class="card-suit" src="./static/img/8 бубны.png">`,
+    `<img class="card-suit" src="./static/img/8 крести.png">`,
+    `<img class="card-suit" src="./static/img/8 пики.png">`,
+    `<img class="card-suit" src="./static/img/8 черви.png">`,
+    `<img class="card-suit" src="./static/img/9 бубны.png">`,
+    `<img class="card-suit" src="./static/img/9 крести.png">`,
+    `<img class="card-suit" src="./static/img/9 пики.png">`,
+    `<img class="card-suit" src="./static/img/9 черви.png">`,
+    `<img class="card-suit" src="./static/img/валет бубны.png">`,
+    `<img class="card-suit" src="./static/img/валет крести.png">`,
+    `<img class="card-suit" src="./static/img/валет пики.png">`,
+    `<img class="card-suit" src="./static/img/валет черви.png">`,
+    `<img class="card-suit" src="./static/img/дама бубны.png">`,
+    `<img class="card-suit" src="./static/img/дама крести.png">`,
+    `<img class="card-suit" src="./static/img/дама пики.png">`,
+    `<img class="card-suit" src="./static/img/дама черви.png">`,
+    `<img class="card-suit" src="./static/img/король бубны.png">`,
+    `<img class="card-suit" src="./static/img/король крести.png">`,
+    `<img class="card-suit" src="./static/img/король пики.png">`,
+    `<img class="card-suit" src="./static/img/король черви.png">`,
+    `<img class="card-suit" src="./static/img/туз бубны.png">`,
+    `<img class="card-suit" src="./static/img/туз крести.png">`,
+    `<img class="card-suit" src="./static/img/туз пики.png">`,
+    `<img class="card-suit" src="./static/img/туз черви.png">`  
+]
+
+const coverCardArr = []
+
+for (let index = 0; index < 36; index++) {
+    coverCardArr.push(
+        `<img src="./static/img/рубашка.png" class="cover-card">`,
+    )
+};
+
+
+/***/ }),
+
 /***/ "./component/renderChoicePage.js":
 /*!***************************************!*\
   !*** ./component/renderChoicePage.js ***!
@@ -63,19 +124,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   renderPlayingField: () => (/* binding */ renderPlayingField)
 /* harmony export */ });
-// import { cardArray } from './cardArray.js'
+/* harmony import */ var _cardArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardArray.js */ "./component/cardArray.js");
+
+
 
 function renderPlayingField(levelPoint, appEl) {
     let level = levelPoint.value
 
-    const coverCardArr = []
+    let sortCardArray = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.cardArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, level / 2)
+    sortCardArray = sortCardArray
+        .concat(sortCardArray)
+        .sort(() => Math.random() - 0.5)
+        .join('')
 
-        for (let index = 0; index < level; index++) {
-            coverCardArr.push(`<img src="./static/img/рубашка.png" class="cover-card">`)
-        }
-        console.log(coverCardArr);
-
-  
     const appHtml = `
     <div class="wrap">
     <header class="center-big">
@@ -88,32 +151,25 @@ function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${coverCardArr.join("")}</div>
+    <div class="game-field center-big" id="suits">${sortCardArray}</div>
 </div>
 `
     appEl.innerHTML = appHtml
-    
-// function showSuitCard() {
-//              let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
-//             sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
-//             const suits = document.getElementById('suits'); 
-//             suits.innerHTML = `${sortCardArray}`;
-        
-//             setTimeout(() => {
-//                 showSuitCard();
-//                }, 5000);   
-// };
-// showSuitCard();
-    const coverCards = document.querySelectorAll(".cover-card");
+
+    function showCoverCard() {
+        let sortCoverCardArr = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.coverCardArr.slice(0, level).join('')
+        const suits = document.getElementById('suits')
+        suits.innerHTML = `${sortCoverCardArr}`
+    console.log("do");
+    }
+    setTimeout(showCoverCard, 5000);
+
+    const coverCards = document.querySelectorAll('.cover-card')
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
-            console.log("click");
+            console.log('click')
         })
     }
-
-
-
-
 }
 
 

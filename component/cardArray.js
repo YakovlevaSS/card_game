@@ -36,3 +36,12 @@ export const cardArray = [
     `<img class="card-suit" src="./static/img/туз пики.png">`,
     `<img class="card-suit" src="./static/img/туз черви.png">`  
 ]
+
+const coverCardArr = []
+
+for (let index = 0; index < 36; index++) {
+    coverCardArr.push(
+        `<img src="./static/img/рубашка.png" class="cover-card">`,
+    )
+};
+export {coverCardArr};
