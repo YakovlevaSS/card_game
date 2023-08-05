@@ -10,10 +10,10 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   cardArray: () => (/* binding */ cardArray),
-/* harmony export */   coverCardArr: () => (/* binding */ coverCardArr)
+/* harmony export */   coverCardArr: () => (/* binding */ coverCardArr),
+/* harmony export */   suitCardArray: () => (/* binding */ suitCardArray)
 /* harmony export */ });
-const cardArray = [
+const suitCardArray = [
     `<img class="card-suit" src="./static/img/10 бубны.png">`,
     `<img class="card-suit" src="./static/img/10 крести.png">`,
     `<img class="card-suit" src="./static/img/10 пики.png">`,
@@ -122,24 +122,32 @@ function renderChoicePage(appEl, renderPlayingField) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   renderPlayingField: () => (/* binding */ renderPlayingField)
+/* harmony export */   PlayApp: () => (/* binding */ PlayApp)
 /* harmony export */ });
 /* harmony import */ var _cardArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardArray.js */ "./component/cardArray.js");
 
 
 
-function renderPlayingField(levelPoint, appEl) {
+function PlayApp(levelPoint, appEl) {
     let level = levelPoint.value
 
-    let sortCardArray = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.cardArray
+    //Создаём два сортированных массива
+    let sortSuitCardArray = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.suitCardArray
         .sort(() => Math.random() - 0.5)
         .slice(0, level / 2)
-    sortCardArray = sortCardArray
-        .concat(sortCardArray)
+    sortSuitCardArray = sortSuitCardArray
+        .concat(sortSuitCardArray)
         .sort(() => Math.random() - 0.5)
         .join('')
 
-    const appHtml = `
+    let sortCoverCardArr = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.coverCardArr.slice(0, level).join('')
+
+    //Создаём массив, который будет показываться
+    let baseCardArr = []
+
+    baseCardArr = sortSuitCardArray
+    function renderPlayingField() {
+        const appHtml = `
     <div class="wrap">
     <header class="center-big">
       <div class="timer ">
@@ -151,25 +159,25 @@ function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${sortCardArray}</div>
+    <div class="game-field center-big" id="suits">${baseCardArr}</div>
 </div>
 `
-    appEl.innerHTML = appHtml
+        appEl.innerHTML = appHtml
+    }
+    renderPlayingField()
 
     function showCoverCard() {
-        let sortCoverCardArr = _cardArray_js__WEBPACK_IMPORTED_MODULE_0__.coverCardArr.slice(0, level).join('')
+        baseCardArr = sortCoverCardArr
+        renderPlayingField()
         const suits = document.getElementById('suits')
-        suits.innerHTML = `${sortCoverCardArr}`
-    console.log("do");
+        let itemCards = suits.children
+        for (const itemCard of itemCards) {
+            itemCard.addEventListener('click', () => {
+                console.log('click')
+            })
+        }
     }
-    setTimeout(showCoverCard, 5000);
-
-    const coverCards = document.querySelectorAll('.cover-card')
-    for (const coverCard of coverCards) {
-        coverCard.addEventListener('click', () => {
-            console.log('click')
-        })
-    }
+    setTimeout(showCoverCard, 5000)
 }
 
 
@@ -244,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let appEl = document.querySelector('.app');
-(0,_component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__.renderChoicePage)(appEl, _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.renderPlayingField);
+(0,_component_renderChoicePage_js__WEBPACK_IMPORTED_MODULE_1__.renderChoicePage)(appEl, _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.PlayApp);
 
 })();
 

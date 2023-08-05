@@ -1,4 +1,4 @@
-export const cardArray = [
+export const suitCardArray = [
     `<img class="card-suit" src="./static/img/10 бубны.png">`,
     `<img class="card-suit" src="./static/img/10 крести.png">`,
     `<img class="card-suit" src="./static/img/10 пики.png">`,

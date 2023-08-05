@@ -1,18 +1,26 @@
-import { cardArray } from './cardArray.js'
+import { suitCardArray } from './cardArray.js'
 import { coverCardArr } from './cardArray.js'
 
-export function renderPlayingField(levelPoint, appEl) {
+export function PlayApp(levelPoint, appEl) {
     let level = levelPoint.value
 
-    let sortCardArray = cardArray
+    //Создаём два сортированных массива
+    let sortSuitCardArray = suitCardArray
         .sort(() => Math.random() - 0.5)
         .slice(0, level / 2)
-    sortCardArray = sortCardArray
-        .concat(sortCardArray)
+    sortSuitCardArray = sortSuitCardArray
+        .concat(sortSuitCardArray)
         .sort(() => Math.random() - 0.5)
         .join('')
 
-    const appHtml = `
+    let sortCoverCardArr = coverCardArr.slice(0, level).join('')
+
+    //Создаём массив, который будет показываться
+    let baseCardArr = []
+
+    baseCardArr = sortSuitCardArray
+    function renderPlayingField() {
+        const appHtml = `
     <div class="wrap">
     <header class="center-big">
       <div class="timer ">
@@ -24,23 +32,23 @@ export function renderPlayingField(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${sortCardArray}</div>
+    <div class="game-field center-big" id="suits">${baseCardArr}</div>
 </div>
 `
-    appEl.innerHTML = appHtml
+        appEl.innerHTML = appHtml
+    }
+    renderPlayingField()
 
     function showCoverCard() {
-        let sortCoverCardArr = coverCardArr.slice(0, level).join('')
+        baseCardArr = sortCoverCardArr
+        renderPlayingField()
         const suits = document.getElementById('suits')
-        suits.innerHTML = `${sortCoverCardArr}`
-    console.log("do");
+        let itemCards = suits.children
+        for (const itemCard of itemCards) {
+            itemCard.addEventListener('click', () => {
+                console.log('click')
+            })
+        }
     }
-    setTimeout(showCoverCard, 5000);
-
-    const coverCards = document.querySelectorAll('.cover-card')
-    for (const coverCard of coverCards) {
-        coverCard.addEventListener('click', () => {
-            console.log('click')
-        })
-    }
+    setTimeout(showCoverCard, 5000)
 }
