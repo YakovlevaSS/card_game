@@ -42,11 +42,17 @@ export function PlayApp(levelPoint, appEl) {
     function showCoverCard() {
         baseCardArr = sortCoverCardArr
         renderPlayingField()
-        const suits = document.getElementById('suits')
-        let itemCards = suits.children
+        const suits = document.getElementById('suits');
+        let itemCards = suits.children;
+        let log = true;
         for (const itemCard of itemCards) {
             itemCard.addEventListener('click', () => {
-                console.log('click')
+                if (log) {
+                    console.log("перевернуть карту");
+                } else {
+                    console.log("сравнить карты");
+                }
+                log = !log;
             })
         }
     }
