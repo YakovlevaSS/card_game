@@ -1,4 +1,4 @@
-import { cardArray } from './cardArray.js'
+// import { cardArray } from './cardArray.js'
 
 export function renderPlayingField(levelPoint, appEl) {
     let level = levelPoint.value
@@ -28,18 +28,21 @@ export function renderPlayingField(levelPoint, appEl) {
 `
     appEl.innerHTML = appHtml
     
-
+// function showSuitCard() {
+//              let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
+//             sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
+//             const suits = document.getElementById('suits'); 
+//             suits.innerHTML = `${sortCardArray}`;
+        
+//             setTimeout(() => {
+//                 showSuitCard();
+//                }, 5000);   
+// };
+// showSuitCard();
     const coverCards = document.querySelectorAll(".cover-card");
     for (const coverCard of coverCards) {
         coverCard.addEventListener('click', () => {
-            let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
-            sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
-            const suits = document.getElementById('suits'); 
-            suits.innerHTML = `${sortCardArray}`;
-        
-            setTimeout(() => {
-                renderPlayingField(levelPoint, appEl);
-               }, 5000);
+            console.log("click");
         })
     }
 

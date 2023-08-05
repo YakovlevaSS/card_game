@@ -1,1 +1,181 @@
-(()=>{"use strict";const s=['<img class="card-suit" src="./static/img/10 бубны.png">','<img class="card-suit" src="./static/img/10 крести.png">','<img class="card-suit" src="./static/img/10 пики.png">','<img class="card-suit" src="./static/img/10 черви.png">','<img class="card-suit" src="./static/img/6 бубны.png">','<img class="card-suit" src="./static/img/6 крести.png">','<img class="card-suit" src="./static/img/6 пики.png">','<img class="card-suit" src="./static/img/6 черви.png">','<img class="card-suit" src="./static/img/7 бубны.png">','<img class="card-suit" src="./static/img/7 крести.png">','<img class="card-suit" src="./static/img/7 пики.png">','<img class="card-suit" src="./static/img/7 черви.png">','<img class="card-suit" src="./static/img/8 бубны.png">','<img class="card-suit" src="./static/img/8 крести.png">','<img class="card-suit" src="./static/img/8 пики.png">','<img class="card-suit" src="./static/img/8 черви.png">','<img class="card-suit" src="./static/img/9 бубны.png">','<img class="card-suit" src="./static/img/9 крести.png">','<img class="card-suit" src="./static/img/9 пики.png">','<img class="card-suit" src="./static/img/9 черви.png">','<img class="card-suit" src="./static/img/валет бубны.png">','<img class="card-suit" src="./static/img/валет крести.png">','<img class="card-suit" src="./static/img/валет пики.png">','<img class="card-suit" src="./static/img/валет черви.png">','<img class="card-suit" src="./static/img/дама бубны.png">','<img class="card-suit" src="./static/img/дама крести.png">','<img class="card-suit" src="./static/img/дама пики.png">','<img class="card-suit" src="./static/img/дама черви.png">','<img class="card-suit" src="./static/img/король бубны.png">','<img class="card-suit" src="./static/img/король крести.png">','<img class="card-suit" src="./static/img/король пики.png">','<img class="card-suit" src="./static/img/король черви.png">','<img class="card-suit" src="./static/img/туз бубны.png">','<img class="card-suit" src="./static/img/туз крести.png">','<img class="card-suit" src="./static/img/туз пики.png">','<img class="card-suit" src="./static/img/туз черви.png">'];function i(c,t){let a=c.value;const r=[];for(let s=0;s<a;s++)r.push('<img src="./static/img/рубашка.png" class="cover-card">');console.log(r);const n=`\n    <div class="wrap">\n    <header class="center-big">\n      <div class="timer ">\n        <div class="timer__units">\n            <p class="timer__min">min</p>\n            <p class="timer__sek">sek</p>\n        </div>\n        <div class="timer__time">00.00</div>\n      </div>  \n      <button type="submit" class="button" id="button-new-start" >Начать заново</button>\n    </header>\n    <div class="game-field center-big" id="suits">${r.join("")}</div>\n</div>\n`;t.innerHTML=n;const g=document.querySelectorAll(".cover-card");for(const r of g)r.addEventListener("click",(()=>{let r=s.sort((()=>Math.random()-.5)).slice(0,a/2);r=r.concat(r).sort((()=>Math.random()-.5)).join(""),document.getElementById("suits").innerHTML=`${r}`,setTimeout((()=>{i(c,t)}),5e3)}))}!function(){let s=document.querySelector(".app");s.innerHTML='\n    <div class="wrap center">\n    <form class="choice" id="form" method = "POST" action = "#">\n        <h2 class="choice__title">\n            Выбери<br>сложность\n        </h2>\n        <div class="choice__items-wrap">\n\n            <input class="choice__item" type="radio" id="radio1" name="radios" value="6" checked>\n            <label for="radio1">1</label>\n\n            <input class="choice__item" type="radio" id="radio2" name="radios" value="12">\n            <label for="radio2">2</label>\n\n            <input class="choice__item" type="radio" id="radio3" name="radios" value="18">\n            <label for="radio3">3</label>\n        </div>\n        <button class="button choice__button" type="submit">\n            Старт\n        </button>\n    </form>\n    </div>',document.getElementById("form").addEventListener("submit",(c=>{c.preventDefault();let t=document.querySelectorAll(".choice__item");for(const c of t)c.checked&&(console.log(c.value),i(c,s))}))}()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./component/renderPlayingField.js":
+/*!*****************************************!*\
+  !*** ./component/renderPlayingField.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderPlayingField: () => (/* binding */ renderPlayingField)
+/* harmony export */ });
+// import { cardArray } from './cardArray.js'
+
+function renderPlayingField(levelPoint, appEl) {
+    let level = levelPoint.value
+
+    const coverCardArr = []
+
+        for (let index = 0; index < level; index++) {
+            coverCardArr.push(`<img src="./static/img/рубашка.png" class="cover-card">`)
+        }
+        console.log(coverCardArr);
+
+  
+    const appHtml = `
+    <div class="wrap">
+    <header class="center-big">
+      <div class="timer ">
+        <div class="timer__units">
+            <p class="timer__min">min</p>
+            <p class="timer__sek">sek</p>
+        </div>
+        <div class="timer__time">00.00</div>
+      </div>  
+      <button type="submit" class="button" id="button-new-start" >Начать заново</button>
+    </header>
+    <div class="game-field center-big" id="suits">${coverCardArr.join("")}</div>
+</div>
+`
+    appEl.innerHTML = appHtml
+    
+// function showSuitCard() {
+//              let sortCardArray = cardArray.sort(() =>Math.random() - 0.5 ).slice(0, level/2);
+//             sortCardArray = sortCardArray.concat(sortCardArray).sort(() =>Math.random() - 0.5 ).join("");
+//             const suits = document.getElementById('suits'); 
+//             suits.innerHTML = `${sortCardArray}`;
+        
+//             setTimeout(() => {
+//                 showSuitCard();
+//                }, 5000);   
+// };
+// showSuitCard();
+    const coverCards = document.querySelectorAll(".cover-card");
+    for (const coverCard of coverCards) {
+        coverCard.addEventListener('click', () => {
+            console.log("click");
+        })
+    }
+
+
+
+
+}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component/renderPlayingField.js */ "./component/renderPlayingField.js");
+
+function renderChoicePage() {
+    let appEl = document.querySelector('.app')
+    const appHtml = `
+    <div class="wrap center">
+    <form class="choice" id="form" method = "POST" action = "#">
+        <h2 class="choice__title">
+            Выбери<br>сложность
+        </h2>
+        <div class="choice__items-wrap">
+
+            <input class="choice__item" type="radio" id="radio1" name="radios" value="6" checked>
+            <label for="radio1">1</label>
+
+            <input class="choice__item" type="radio" id="radio2" name="radios" value="12">
+            <label for="radio2">2</label>
+
+            <input class="choice__item" type="radio" id="radio3" name="radios" value="18">
+            <label for="radio3">3</label>
+        </div>
+        <button class="button choice__button" type="submit">
+            Старт
+        </button>
+    </form>
+    </div>`
+    appEl.innerHTML = appHtml
+    const form = document.getElementById('form')
+    form.addEventListener('submit', (element) => {
+        element.preventDefault()
+
+        let levelPoints = document.querySelectorAll('.choice__item')
+
+        for (const levelPoint of levelPoints) {
+            if (levelPoint.checked) {
+                console.log(levelPoint.value)
+                ;(0,_component_renderPlayingField_js__WEBPACK_IMPORTED_MODULE_0__.renderPlayingField)(levelPoint, appEl)
+            }
+        }
+    })
+}
+renderChoicePage()
+
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=main.js.map
