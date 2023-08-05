@@ -11,9 +11,9 @@ export function PlayApp(levelPoint, appEl) {
     sortSuitCardArray = sortSuitCardArray
         .concat(sortSuitCardArray)
         .sort(() => Math.random() - 0.5)
-        .join('')
 
-    let sortCoverCardArr = coverCardArr.slice(0, level).join('')
+
+    let sortCoverCardArr = coverCardArr.slice(0, level)
 
     //Создаём массив, который будет показываться
     let baseCardArr = []
@@ -32,7 +32,7 @@ export function PlayApp(levelPoint, appEl) {
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>
     </header>
-    <div class="game-field center-big" id="suits">${baseCardArr}</div>
+    <div class="game-field center-big" id="suits">${baseCardArr.join('')}</div>
 </div>
 `
         appEl.innerHTML = appHtml
@@ -48,11 +48,13 @@ export function PlayApp(levelPoint, appEl) {
         for (const itemCard of itemCards) {
             itemCard.addEventListener('click', () => {
                 if (log) {
-                    console.log("перевернуть карту");
+                    baseCardArr[3] = sortSuitCardArray[3];
+                    renderPlayingField()
                 } else {
                     console.log("сравнить карты");
                 }
                 log = !log;
+                console.log(log);
             })
         }
     }
