@@ -41,7 +41,7 @@ const coverCardArr = []
 
 for (let index = 0; index < 36; index++) {
     coverCardArr.push(
-        `<img src="./static/img/рубашка.png" class="cover-card">`,
+        `<img src="./static/img/рубашка.png" class="cover-card" data-index="${index}">`,
     )
 };
 export {coverCardArr};
