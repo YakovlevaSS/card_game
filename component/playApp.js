@@ -23,6 +23,8 @@ export function PlayApp(levelPoint, appEl) {
     renderPlayingField(sortSuitCardArray, appEl)
 
     let log = true
+    let firstCard = null;
+    let secondCard = null;
 
     function showCoverCard() {
         renderPlayingField(baseCardArr, appEl)
@@ -32,14 +34,15 @@ export function PlayApp(levelPoint, appEl) {
             itemCard.addEventListener('click', () => {
                 let cardIndex = itemCard.dataset.index
                 console.log(cardIndex)
-                let oldCardIndex = cardIndex;
                 if (log) {
+                    firstCard = cardIndex;
                     baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                     renderPlayingField(baseCardArr, appEl)
                     showCoverCard()
                     
                 } else {
-                    compareCard(cardIndex, oldCardIndex)
+                    secondCard = cardIndex
+                    compareCard(firstCard, secondCard)
                     renderPlayingField(baseCardArr, appEl)
                     showCoverCard()
                 }
@@ -49,15 +52,16 @@ export function PlayApp(levelPoint, appEl) {
     }
     setTimeout(showCoverCard, 5000)
 
-    function compareCard(cardIndex, oldCardIndex) {
-        if (sortSuitCardArray[cardIndex] === sortSuitCardArray[oldCardIndex]) {
-            baseCardArr = sortCoverCardArr;
-            renderPlayingField(baseCardArr, appEl)
+    function compareCard(firstCard, secondCard) {
+        if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
+            baseCardArr[secondCard] = sortSuitCardArray[secondCard]
+            // baseCardArr = sortCoverCardArr;
+            // renderPlayingField(baseCardArr, appEl)
             alert('выиграл')
         }
         else{
             baseCardArr = sortCoverCardArr;
-            renderPlayingField(baseCardArr, appEl)
+            // renderPlayingField(baseCardArr, appEl)
             alert("проиграл")
         }
     }
