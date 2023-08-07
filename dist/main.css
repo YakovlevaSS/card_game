@@ -1,3 +1,6 @@
+/*!*************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./style.css ***!
+  \*************************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +9,7 @@
 
 @font-face {
   font-family: StratosSkyeng;
-  src: url("./static/fonts/stratosskyengweb-regular.woff") format("woff");
+  src: url(d7d99bd522cf2d77ce4a.woff) format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -131,3 +134,5 @@ header {
   text-align: left;
   color: #fff;
 }/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=main.css.map*/
