@@ -1,4 +1,4 @@
-export function renderChoicePage(appEl, renderPlayingField) {    
+export function renderChoicePage(appEl: Element | null, PlayApp: (level: number, appEl: Element) => void) {    
     const appHtml = `
     <div class="wrap center">
     <form class="choice" id="form" method = "POST" action = "#">
@@ -21,18 +21,25 @@ export function renderChoicePage(appEl, renderPlayingField) {
         </button>
     </form>
     </div>`
-    appEl.innerHTML = appHtml
-    const form = document.getElementById('form')
-    form.addEventListener('submit', (element) => {
-        element.preventDefault()
-
-        let levelPoints = document.querySelectorAll('.choice__item')
-
-        for (const levelPoint of levelPoints) {
-            if (levelPoint.checked) {
-                console.log(levelPoint.value)
-                renderPlayingField(levelPoint, appEl)
+    
+    if (appEl) {
+        appEl.innerHTML = appHtml
+        const form = document.getElementById('form')
+        if (form) {
+            form.addEventListener('submit', (element) => {
+            element.preventDefault()
+    
+            let levelPoints = document.querySelectorAll('.choice__item')
+            const levelPointsArray = Array.from(levelPoints);
+            for (let levelPoint of levelPointsArray) {
+                if ((levelPoint as HTMLInputElement).checked) {
+                    let level: number = Number((levelPoint as HTMLInputElement).value)
+                    PlayApp(level, appEl)
+                }
             }
-        }
-    })
+        })    
+        }    
+    }
+    
+
 }

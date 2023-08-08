@@ -1,9 +1,9 @@
-import { suitCardArray } from './cardArray.js'
-import { coverCardArr } from './cardArray.js'
-import { renderPlayingField } from './renderPlayingField.js'
+import { suitCardArray } from './cardArray'
+import { coverCardArr } from './cardArray'
+import { renderPlayingField } from './renderPlayingField'
 
-export function PlayApp(levelPoint, appEl) {
-    let level = levelPoint.value
+export function PlayApp(level: number, appEl: Element) {
+    // let level = levelPoint.value
 
     //Создаём два сортированных массива
     let sortSuitCardArray = suitCardArray
@@ -16,25 +16,28 @@ export function PlayApp(levelPoint, appEl) {
     let sortCoverCardArr = coverCardArr.slice(0, level)
 
     //Создаём массив, который будет показываться
-    let baseCardArr = []
+    let baseCardArr: string[] 
 
     baseCardArr = sortCoverCardArr
 
     renderPlayingField(sortSuitCardArray, appEl)
 
-    let log = true
-    let firstCard = null;
-    let secondCard = null;
+    let log: boolean = true
+    let firstCard: number;
+    let secondCard: number;
 
     function showCoverCard() {
         renderPlayingField(baseCardArr, appEl)
         const suits = document.getElementById('suits')
+        if (suits) {
         let itemCards = suits.children
-        for (const itemCard of itemCards) {
+        const itemCardsArray = Array.from(itemCards);
+    
+        for (const itemCard of itemCardsArray) {
             itemCard.addEventListener('click', () => {
-                let cardIndex = itemCard.dataset.index
-                console.log(cardIndex)
-                if (log) {
+                let cardIndex = Number((itemCard as HTMLElement).dataset.index)
+                console.log(cardIndex);
+                if (log && cardIndex) {
                     firstCard = cardIndex;
                     baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                     renderPlayingField(baseCardArr, appEl)
@@ -48,11 +51,12 @@ export function PlayApp(levelPoint, appEl) {
                 }
                 log = !log
             })
-        }
+        }    
+        }        
     }
     setTimeout(showCoverCard, 5000)
 
-    function compareCard(firstCard, secondCard) {
+    function compareCard(firstCard: number, secondCard:number) {
         if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
             baseCardArr[secondCard] = sortSuitCardArray[secondCard]
             // baseCardArr = sortCoverCardArr;

@@ -1,4 +1,4 @@
-export function renderPlayingField(baseCardArr, appEl) {
+export function renderPlayingField(baseCardArr: string[], appEl: Element) {
         const appHtml = `
     <div class="wrap">
     <header class="center-big">
