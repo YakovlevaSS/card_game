@@ -179,15 +179,11 @@ header {
         margin-bottom: 40px;
     }
 }
+
 .modal {
+    position: absolute;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    // padding-top: 158px;
-    // padding-bottom: 158px;
-    left:0px;
-    right:0px;
     top: 158px;
-    position: absolute;
-    
 }

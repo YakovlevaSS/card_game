@@ -167,11 +167,9 @@ header {
 }
 
 .modal {
+  position: absolute;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  left: 0px;
-  right: 0px;
   top: 158px;
-  position: absolute;
 }/*# sourceMappingURL=style.css.map */
