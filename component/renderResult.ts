@@ -1,5 +1,5 @@
 import { renderChoicePage } from './renderChoicePage'
-export function renderResult(appEl: Element, gameProgress: Number) {
+export function renderResult(appEl: Element, gameProgress: Number, playingField: HTMLElement | null ) {
     let modalEl = document.getElementById('modal')
     const modalHtml = `
     <div class="wrap center">
@@ -30,5 +30,11 @@ export function renderResult(appEl: Element, gameProgress: Number) {
         resturtButton.addEventListener('click', () => {
             renderChoicePage(appEl)
         })
+    }
+    console.log(playingField);
+
+    if (playingField) {
+        console.log(playingField);
+        playingField.style.opacity = ".3";   
     }
 }

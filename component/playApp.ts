@@ -20,7 +20,9 @@ export function PlayApp(level: number, appEl: Element) {
 
     baseCardArr = sortCoverCardArr
 
-    renderPlayingField(sortSuitCardArray, appEl)
+    renderPlayingField(sortSuitCardArray, appEl,)
+const playingField: HTMLElement | null = document.querySelector(".playing-field")
+console.log(playingField);
 
     let log: boolean = true
     let firstCard: number
@@ -73,11 +75,17 @@ export function PlayApp(level: number, appEl: Element) {
         if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
             baseCardArr[secondCard] = sortSuitCardArray[secondCard]
             gameProgress === 0
-                ? renderResult(appEl, gameProgress)
+                ? renderResult(appEl, gameProgress, playingField)
                 : showCoverCard
+                // if (playingField) {
+                //     playingField.style.opacity = ".3";   
+                // }
         } else {
             baseCardArr = sortCoverCardArr
-            renderResult(appEl, gameProgress)
+            renderResult(appEl, gameProgress, playingField)
+            // if (playingField) {
+            //     playingField.style.opacity = ".3";   
+            // }
             log = false
         }
     }

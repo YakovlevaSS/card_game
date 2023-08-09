@@ -150,8 +150,6 @@ header {
     border-radius: 12px;
     display: flex;
     align-content: center;
-    margin-top: 158px;
-    margin-bottom: 158px;
     flex-flow: column wrap;
     align-items: center;
     padding-top: 26px;
@@ -180,4 +178,16 @@ header {
         color: #000;
         margin-bottom: 40px;
     }
+}
+.modal {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // padding-top: 158px;
+    // padding-bottom: 158px;
+    left:0px;
+    right:0px;
+    top: 158px;
+    position: absolute;
+    
 }
