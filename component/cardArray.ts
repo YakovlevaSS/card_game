@@ -34,7 +34,7 @@ export const suitCardArray: string[] = [
     `<img class="card-suit" src="./static/img/туз бубны.png">`,
     `<img class="card-suit" src="./static/img/туз крести.png">`,
     `<img class="card-suit" src="./static/img/туз пики.png">`,
-    `<img class="card-suit" src="./static/img/туз черви.png">`  
+    `<img class="card-suit" src="./static/img/туз черви.png">`,
 ]
 
 const coverCardArr: string[] = []
@@ -43,5 +43,5 @@ for (let index = 0; index < 36; index++) {
     coverCardArr.push(
         `<img src="./static/img/рубашка.png" class="cover-card" data-index="${index}">`,
     )
-};
-export {coverCardArr};
+}
+export { coverCardArr }

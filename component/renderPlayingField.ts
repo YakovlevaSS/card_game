@@ -1,5 +1,5 @@
 export function renderPlayingField(baseCardArr: string[], appEl: Element) {
-        const appHtml = `
+    const appHtml = `
     <div class="wrap">
     <header class="center-big">
       <div class="timer ">
@@ -14,6 +14,5 @@ export function renderPlayingField(baseCardArr: string[], appEl: Element) {
     <div class="game-field center-big" id="suits">${baseCardArr.join('')}</div>
 </div>
 `
-        appEl.innerHTML = appHtml
-    }
-    
+    appEl.innerHTML = appHtml
+}

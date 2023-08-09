@@ -13,7 +13,7 @@ export let counterTime = function getTime() {
                 hour++
                 min = 0
             }
-             console.log(`${hour}:${min}:${sec}`); 
+            console.log(`${hour}:${min}:${sec}`)
         }, 1000)
     }, 5000)
 }

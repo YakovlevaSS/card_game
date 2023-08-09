@@ -29,10 +29,10 @@ export function PlayApp(level: number, appEl: Element) {
 
     function showCoverCard() {
         renderPlayingField(baseCardArr, appEl)
-        
+
         const resturtButton = document.getElementById('button-new-start')
         if (resturtButton) {
-            resturtButton.addEventListener('click', () =>{
+            resturtButton.addEventListener('click', () => {
                 renderChoicePage(appEl)
             })
         }
@@ -78,7 +78,7 @@ export function PlayApp(level: number, appEl: Element) {
         } else {
             baseCardArr = sortCoverCardArr
             renderResult(appEl, gameProgress)
-            log = false;            
+            log = false
         }
     }
 }

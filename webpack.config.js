@@ -15,9 +15,9 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: "ts-loader",
+                use: 'ts-loader',
                 exclude: /node_modules/,
-              },
+            },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -34,8 +34,8 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [".ts", ".js"],
-      },
+        extensions: ['.ts', '.js'],
+    },
     devtool: isProduction ? 'hidden-source-map' : 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -53,9 +53,6 @@ module.exports = {
         new MiniCssExtractPlugin(),
     ],
     optimization: {
-        minimizer: [
-          '...',
-          new CssMinimizerPlugin(),
-        ],
-    }
+        minimizer: ['...', new CssMinimizerPlugin()],
+    },
 }

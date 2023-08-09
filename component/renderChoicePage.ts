@@ -1,5 +1,5 @@
-import { PlayApp } from "./playApp"
-export function renderChoicePage(appEl: Element | null) {    
+import { PlayApp } from './playApp'
+export function renderChoicePage(appEl: Element | null) {
     const appHtml = `
     <div class="wrap center">
     <form class="choice" id="form" method = "POST" action = "#">
@@ -22,25 +22,25 @@ export function renderChoicePage(appEl: Element | null) {
         </button>
     </form>
     </div>`
-    
+
     if (appEl) {
         appEl.innerHTML = appHtml
         const form = document.getElementById('form')
         if (form) {
             form.addEventListener('submit', (element) => {
-            element.preventDefault()
-    
-            let levelPoints = document.querySelectorAll('.choice__item')
-            const levelPointsArray = Array.from(levelPoints);
-            for (let levelPoint of levelPointsArray) {
-                if ((levelPoint as HTMLInputElement).checked) {
-                    let level: number = Number((levelPoint as HTMLInputElement).value)
-                    PlayApp(level, appEl)
-                }
-            }
-        })    
-        }    
-    }
-    
+                element.preventDefault()
 
+                let levelPoints = document.querySelectorAll('.choice__item')
+                const levelPointsArray = Array.from(levelPoints)
+                for (let levelPoint of levelPointsArray) {
+                    if ((levelPoint as HTMLInputElement).checked) {
+                        let level: number = Number(
+                            (levelPoint as HTMLInputElement).value,
+                        )
+                        PlayApp(level, appEl)
+                    }
+                }
+            })
+        }
+    }
 }
