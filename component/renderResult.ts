@@ -1,3 +1,4 @@
+import { renderChoicePage } from "./renderChoicePage"
 export function renderResult (appEl: Element, gameProgress: Number ) {
     const appHtml = `
     <div class="wrap center">
@@ -8,11 +9,17 @@ export function renderResult (appEl: Element, gameProgress: Number ) {
         <h2 class="result__title">${gameProgress===0? 'Вы выиграли!' : 'Вы проиграли'}</h2>
             <p class="result__timer-text">Затраченное время</p>
             <div class="result__timer-time">01.20</div>
-        <button class="button result__button" type="submit">
+        <button class="button" id = "result__button" type="submit">
             Играть снова
         </button>
     </div>
 </div>
 `
     appEl.innerHTML = appHtml
+    const resturtButton = document.getElementById('result__button')
+    if (resturtButton) {
+        resturtButton.addEventListener('click', () =>{
+            renderChoicePage(appEl)
+        })
+    }
 }

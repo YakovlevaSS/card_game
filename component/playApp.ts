@@ -2,6 +2,7 @@ import { suitCardArray } from './cardArray'
 import { coverCardArr } from './cardArray'
 import { renderPlayingField } from './renderPlayingField'
 import { renderResult } from './renderResult'
+import { renderChoicePage } from './renderChoicePage'
 
 export function PlayApp(level: number, appEl: Element) {
     //Создаём два сортированных массива
@@ -28,6 +29,14 @@ export function PlayApp(level: number, appEl: Element) {
 
     function showCoverCard() {
         renderPlayingField(baseCardArr, appEl)
+        
+        const resturtButton = document.getElementById('button-new-start')
+        if (resturtButton) {
+            resturtButton.addEventListener('click', () =>{
+                renderChoicePage(appEl)
+            })
+        }
+
         const suits = document.getElementById('suits')
         if (suits) {
             let itemCards = suits.children

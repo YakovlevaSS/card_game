@@ -1,4 +1,5 @@
-export function renderChoicePage(appEl: Element | null, PlayApp: (level: number, appEl: Element) => void) {    
+import { PlayApp } from "./playApp"
+export function renderChoicePage(appEl: Element | null) {    
     const appHtml = `
     <div class="wrap center">
     <form class="choice" id="form" method = "POST" action = "#">
