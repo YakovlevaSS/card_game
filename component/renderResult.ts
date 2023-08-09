@@ -2,7 +2,7 @@ import { renderChoicePage } from './renderChoicePage'
 export function renderResult(appEl: Element, gameProgress: Number, playingField: HTMLElement | null ) {
     let modalEl = document.getElementById('modal')
     const modalHtml = `
-    <div class="wrap center">
+    <div class="wrap">
     <div class="result">
         <div class="result__img">
         ${
