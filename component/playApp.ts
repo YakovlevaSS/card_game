@@ -1,10 +1,9 @@
 import { suitCardArray } from './cardArray'
 import { coverCardArr } from './cardArray'
 import { renderPlayingField } from './renderPlayingField'
+import { renderResult } from './renderResult'
 
 export function PlayApp(level: number, appEl: Element) {
-    // let level = levelPoint.value
-
     //Создаём два сортированных массива
     let sortSuitCardArray = suitCardArray
         .sort(() => Math.random() - 0.5)
@@ -16,57 +15,61 @@ export function PlayApp(level: number, appEl: Element) {
     let sortCoverCardArr = coverCardArr.slice(0, level)
 
     //Создаём массив, который будет показываться
-    let baseCardArr: string[] 
+    let baseCardArr: string[]
 
     baseCardArr = sortCoverCardArr
 
     renderPlayingField(sortSuitCardArray, appEl)
 
     let log: boolean = true
-    let firstCard: number;
-    let secondCard: number;
+    let firstCard: number
+    let secondCard: number
+    let gameProgress: number = level
 
     function showCoverCard() {
         renderPlayingField(baseCardArr, appEl)
         const suits = document.getElementById('suits')
         if (suits) {
-        let itemCards = suits.children
-        const itemCardsArray = Array.from(itemCards);
-    
-        for (const itemCard of itemCardsArray) {
-            itemCard.addEventListener('click', () => {
-                let cardIndex = Number((itemCard as HTMLElement).dataset.index)
-                console.log(cardIndex);
-                if (log && cardIndex) {
-                    firstCard = cardIndex;
-                    baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
-                    renderPlayingField(baseCardArr, appEl)
-                    showCoverCard()
-                    
-                } else {
-                    secondCard = cardIndex
-                    compareCard(firstCard, secondCard)
-                    renderPlayingField(baseCardArr, appEl)
-                    showCoverCard()
-                }
-                log = !log
-            })
-        }    
-        }        
+            let itemCards = suits.children
+            const itemCardsArray = Array.from(itemCards)
+
+            for (const itemCard of itemCardsArray) {
+                itemCard.addEventListener('click', () => {
+                    let cardIndex = Number(
+                        (itemCard as HTMLElement).dataset.index,
+                    )
+                    if (log && cardIndex) {
+                        firstCard = cardIndex
+                        gameProgress = --gameProgress
+                        console.log(gameProgress)
+                        baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
+                        renderPlayingField(baseCardArr, appEl)
+                        showCoverCard()
+                    } else {
+                        secondCard = cardIndex
+                        gameProgress = --gameProgress
+                        baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
+                        renderPlayingField(baseCardArr, appEl)
+                        showCoverCard()
+                        compareCard(firstCard, secondCard)
+                    }
+                    log = !log
+                })
+            }
+        }
     }
     setTimeout(showCoverCard, 5000)
 
-    function compareCard(firstCard: number, secondCard:number) {
+    function compareCard(firstCard: number, secondCard: number) {
         if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
             baseCardArr[secondCard] = sortSuitCardArray[secondCard]
-            // baseCardArr = sortCoverCardArr;
-            // renderPlayingField(baseCardArr, appEl)
-            alert('выиграл')
-        }
-        else{
-            baseCardArr = sortCoverCardArr;
-            // renderPlayingField(baseCardArr, appEl)
-            alert("проиграл")
+            gameProgress === 0
+                ? renderResult(appEl, gameProgress)
+                : showCoverCard
+        } else {
+            baseCardArr = sortCoverCardArr
+            renderResult(appEl, gameProgress)
+            log = false;            
         }
     }
 }

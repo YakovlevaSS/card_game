@@ -142,3 +142,44 @@ header {
         color: #fff;
     }
 }
+
+.result {
+    background-color: #c2f5ff;
+    width: 480px;
+    height: 459px;
+    border-radius: 12px;
+    display: flex;
+    align-content: center;
+    margin-top: 158px;
+    margin-bottom: 158px;
+    flex-flow: column wrap;
+    align-items: center;
+    &__img {
+        margin-top: 26px;
+        margin-bottom: 9px;
+    }
+    &__title {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0em;
+        color: #004980;
+    }
+    &__timer-text {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32px;
+        letter-spacing: 0em;
+        color: #000;
+        margin-top: 28px;
+        margin-bottom: 10px;
+    }
+    &__timer-time {
+        font-size: 64px;
+        font-weight: 400;
+        line-height: 72px;
+        letter-spacing: 0px;
+        color: #000;
+        margin-bottom: 40px;
+    }
+}
