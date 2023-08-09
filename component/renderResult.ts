@@ -1,6 +1,7 @@
 import { renderChoicePage } from "./renderChoicePage"
 export function renderResult (appEl: Element, gameProgress: Number ) {
-    const appHtml = `
+    let modalEl = document.getElementById("modal");
+    const modalHtml = `
     <div class="wrap center">
     <div class="result">
         <div class="result__img">
@@ -15,7 +16,9 @@ export function renderResult (appEl: Element, gameProgress: Number ) {
     </div>
 </div>
 `
-    appEl.innerHTML = appHtml
+if (modalEl) {
+modalEl.innerHTML = modalHtml    
+}
     const resturtButton = document.getElementById('result__button')
     if (resturtButton) {
         resturtButton.addEventListener('click', () =>{
