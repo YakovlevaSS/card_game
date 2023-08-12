@@ -28,6 +28,9 @@ export function renderResult(appEl: Element, gameProgress: Number, playingField:
     const resturtButton = document.getElementById('result__button')
     if (resturtButton) {
         resturtButton.addEventListener('click', () => {
+            if (modalEl) {
+           modalEl.style.display = "none";     
+            }            
             renderChoicePage(appEl)
         })
     }

@@ -77,15 +77,10 @@ console.log(playingField);
             gameProgress === 0
                 ? renderResult(appEl, gameProgress, playingField)
                 : showCoverCard
-                // if (playingField) {
-                //     playingField.style.opacity = ".3";   
-                // }
+
         } else {
             baseCardArr = sortCoverCardArr
             renderResult(appEl, gameProgress, playingField)
-            // if (playingField) {
-            //     playingField.style.opacity = ".3";   
-            // }
             log = false
         }
     }
