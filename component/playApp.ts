@@ -3,8 +3,19 @@ import { coverCardArr } from './cardArray'
 import { renderPlayingField } from './renderPlayingField'
 import { renderResult } from './renderResult'
 import { renderChoicePage } from './renderChoicePage'
+import { counterTime } from './getTime'
 
 export function PlayApp(level: number, appEl: Element) {
+    const min: number = 0
+    const sec: number = 0
+    let currentDate: Date
+    let combDate: string
+
+    function getCurrentDate() {
+        return (currentDate = new Date())
+    }
+    let id: NodeJS.Timer
+
     //Создаём два сортированных массива
     let sortSuitCardArray = suitCardArray
         .sort(() => Math.random() - 0.5)
@@ -20,9 +31,17 @@ export function PlayApp(level: number, appEl: Element) {
 
     baseCardArr = sortCoverCardArr
 
-    renderPlayingField(sortSuitCardArray, appEl,)
-const playingField: HTMLElement | null = document.querySelector(".playing-field")
-console.log(playingField);
+    renderPlayingField(sortSuitCardArray, appEl)
+
+    let modalEl = document.getElementById('modal')
+
+    const minute = document.getElementById('min')
+    const second = document.getElementById('sec')
+
+    setTimeout(() => {
+        id = counterTime(min, sec, minute, second)
+        getCurrentDate()
+    }, 5000)
 
     let log: boolean = true
     let firstCard: number
@@ -52,7 +71,6 @@ console.log(playingField);
                     if (log && cardIndex) {
                         firstCard = cardIndex
                         gameProgress = --gameProgress
-                        console.log(gameProgress)
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                         renderPlayingField(baseCardArr, appEl)
                         showCoverCard()
@@ -74,13 +92,17 @@ console.log(playingField);
     function compareCard(firstCard: number, secondCard: number) {
         if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
             baseCardArr[secondCard] = sortSuitCardArray[secondCard]
-            gameProgress === 0
-                ? renderResult(appEl, gameProgress, playingField)
-                : showCoverCard
-
+            if (gameProgress === 0) {
+                  ;(modalEl as HTMLElement).style.display = 'block'
+                renderResult( appEl, modalEl, gameProgress, currentDate, combDate)
+                clearInterval(id)
+            }
+                else{showCoverCard()} 
         } else {
             baseCardArr = sortCoverCardArr
-            renderResult(appEl, gameProgress, playingField)
+            ;(modalEl as HTMLElement).style.display = 'block'
+            renderResult( appEl, modalEl, gameProgress, currentDate, combDate)
+            clearInterval(id)
             log = false
         }
     }

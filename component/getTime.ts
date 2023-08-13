@@ -1,19 +1,21 @@
-export let counterTime = function getTime() {
-    let sec: number = 0
-    let min: number = 0
-    let hour: number = 0
-    setTimeout(() => {
-        setInterval(() => {
-            sec++
-            if (sec === 60) {
-                min++
-                sec = 0
-            }
-            if (min === 60) {
-                hour++
-                min = 0
-            }
-            console.log(`${hour}:${min}:${sec}`)
-        }, 1000)
-    }, 5000)
+export function counterTime(
+    min: number,
+    sec: number,
+    minute: HTMLElement | null,
+    second: HTMLElement | null,
+) {
+    const startTimer = setInterval(() => {
+        sec++;
+        if (sec === 60) {
+            min++;
+            sec = 0;
+        }
+
+        if (minute && second) {
+            second.innerText = sec < 10 ? "0" + sec.toString() : sec.toString();
+            minute.innerText = min < 10 ? "0" + min.toString() : min.toString();
+        }
+    }, 1000);
+
+    return startTimer;
 }

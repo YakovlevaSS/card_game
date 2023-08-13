@@ -124,7 +124,7 @@ header {
   gap: 57px;
   justify-content: flex-end;
 }
-.timer__time {
+.timer__counter {
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
