@@ -1,10 +1,11 @@
 export function counterTime(
     min: number,
     sec: number,
-    minute: HTMLElement | null,
-    second: HTMLElement | null,
+
 ) {
     const startTimer = setInterval(() => {
+        const minute = document.getElementById('min')
+        const second = document.getElementById('sec')
         sec++;
         if (sec === 60) {
             min++;
@@ -17,6 +18,5 @@ export function counterTime(
         }
     }, 1000);
 
-console.log(startTimer);
     return startTimer;
 }

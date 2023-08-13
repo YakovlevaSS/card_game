@@ -35,13 +35,8 @@ export function PlayApp(level: number, appEl: Element) {
 
     let modalEl = document.getElementById('modal')
 
-    const minute = document.getElementById('min')
-    const second = document.getElementById('sec')
-
-    console.log(minute);
-
     setTimeout(() => {
-        id = counterTime(min, sec, minute, second)
+        id = counterTime(min, sec)
         getCurrentDate()
         console.log("таймер");
     }, 5000)
