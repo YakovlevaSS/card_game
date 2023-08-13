@@ -71,7 +71,6 @@ console.log(playingField)
     }
 
     if (playingField) {
-        console.log(playingField)
         playingField.style.opacity = '.3'
     }
 }

@@ -38,9 +38,12 @@ export function PlayApp(level: number, appEl: Element) {
     const minute = document.getElementById('min')
     const second = document.getElementById('sec')
 
+    console.log(minute);
+
     setTimeout(() => {
         id = counterTime(min, sec, minute, second)
         getCurrentDate()
+        console.log("таймер");
     }, 5000)
 
     let log: boolean = true

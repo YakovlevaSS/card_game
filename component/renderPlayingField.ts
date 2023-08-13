@@ -8,9 +8,9 @@ export function renderPlayingField(baseCardArr: string[], appEl: Element) {
             <p class="timer__sek">sek</p>
         </div>
         <div class="timer__counter">
-        <span class="timer__time" id="min"></span>
+        <span class="timer__time" id="min">00</span>
         <span class="timer__time">.</span>  
-         <span class="timer__time" id="sec"></span>
+         <span class="timer__time" id="sec">00</span>
         </div>
       </div>  
       <button type="submit" class="button" id="button-new-start" >Начать заново</button>

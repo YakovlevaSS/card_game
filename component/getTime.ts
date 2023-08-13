@@ -17,5 +17,6 @@ export function counterTime(
         }
     }, 1000);
 
+console.log(startTimer);
     return startTimer;
 }
