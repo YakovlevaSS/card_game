@@ -38,7 +38,7 @@ export function PlayApp(level: number, appEl: Element) {
     setTimeout(() => {
         id = counterTime(min, sec)
         getCurrentDate()
-        console.log("таймер");
+        console.log('таймер')
     }, 5000)
 
     let log: boolean = true
@@ -47,7 +47,10 @@ export function PlayApp(level: number, appEl: Element) {
     let gameProgress: number = level
 
     function showCoverCard() {
-        renderPlayingField(baseCardArr, appEl)
+        const suits: HTMLElement | null = document.getElementById('suits')
+        if (suits) {
+            suits.innerHTML = `${baseCardArr.join("")}`;
+        }
 
         const resturtButton = document.getElementById('button-new-start')
         if (resturtButton) {
@@ -55,8 +58,7 @@ export function PlayApp(level: number, appEl: Element) {
                 renderChoicePage(appEl)
             })
         }
-
-        const suits = document.getElementById('suits')
+        
         if (suits) {
             let itemCards = suits.children
             const itemCardsArray = Array.from(itemCards)
@@ -66,21 +68,26 @@ export function PlayApp(level: number, appEl: Element) {
                     let cardIndex = Number(
                         (itemCard as HTMLElement).dataset.index,
                     )
-                    if (log && cardIndex) {
+                    if (log && cardIndex && baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]) {
                         firstCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
-                        renderPlayingField(baseCardArr, appEl)
+                        if (suits) {
+                            suits.innerHTML = `${baseCardArr.join("")}`;
+                        }
                         showCoverCard()
-                    } else {
-                        secondCard = cardIndex
+                        log = !log
+                    } else if (baseCardArr[cardIndex] != sortSuitCardArray[cardIndex])
+                    {                        secondCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
-                        renderPlayingField(baseCardArr, appEl)
+                        if (suits) {
+                            suits.innerHTML = `${baseCardArr.join("")}`;
+                        }
                         showCoverCard()
                         compareCard(firstCard, secondCard)
+                        log = !log
                     }
-                    log = !log
                 })
             }
         }
@@ -91,15 +98,22 @@ export function PlayApp(level: number, appEl: Element) {
         if (sortSuitCardArray[firstCard] === sortSuitCardArray[secondCard]) {
             baseCardArr[secondCard] = sortSuitCardArray[secondCard]
             if (gameProgress === 0) {
-                  ;(modalEl as HTMLElement).style.display = 'block'
-                renderResult( appEl, modalEl, gameProgress, currentDate, combDate)
+                ;(modalEl as HTMLElement).style.display = 'block'
+                renderResult(
+                    appEl,
+                    modalEl,
+                    gameProgress,
+                    currentDate,
+                    combDate,
+                )
                 clearInterval(id)
+            } else {
+                showCoverCard()
             }
-                else{showCoverCard()} 
         } else {
             baseCardArr = sortCoverCardArr
             ;(modalEl as HTMLElement).style.display = 'block'
-            renderResult( appEl, modalEl, gameProgress, currentDate, combDate)
+            renderResult(appEl, modalEl, gameProgress, currentDate, combDate)
             clearInterval(id)
             log = false
         }

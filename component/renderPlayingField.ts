@@ -19,5 +19,4 @@ export function renderPlayingField(baseCardArr: string[], appEl: Element) {
 </div>
 `
     appEl.innerHTML = appHtml
-
 }

@@ -7,34 +7,34 @@ export function renderResult(
     currentDate: Date,
     combDate: string,
 ) {
-    const minutModal: number = 0;
-    const secondModal: number = 0;
+    const minutModal: number = 0
+    const secondModal: number = 0
 
     function getTimeModalWindow(minutModal: number, secondModal: number) {
-        const endDate = new Date();
-        const diffDate = endDate.getTime() - currentDate.getTime();
+        const endDate = new Date()
+        const diffDate = endDate.getTime() - currentDate.getTime()
 
-        minutModal = Math.floor(diffDate / 60000);
-        secondModal = Math.floor((diffDate % 60000) / 1000);
+        minutModal = Math.floor(diffDate / 60000)
+        secondModal = Math.floor((diffDate % 60000) / 1000)
 
         combDate = `${
             minutModal < 10
-                ? "0" + minutModal.toString()
+                ? '0' + minutModal.toString()
                 : minutModal.toString()
         }:${
             secondModal < 10
-                ? "0" + secondModal.toString()
+                ? '0' + secondModal.toString()
                 : secondModal.toString()
-        }`;
-        return combDate;
+        }`
+        return combDate
     }
-    getTimeModalWindow(minutModal, secondModal);
+    getTimeModalWindow(minutModal, secondModal)
 
-    console.log(combDate);
+    console.log(combDate)
 
     const playingField: HTMLElement | null =
-    document.querySelector('.playing-field')
-console.log(playingField)
+        document.querySelector('.playing-field')
+    console.log(playingField)
 
     const modalHtml = `
     <div class="wrap">
