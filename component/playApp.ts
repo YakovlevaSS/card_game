@@ -49,7 +49,7 @@ export function PlayApp(level: number, appEl: Element) {
     function showCoverCard() {
         const suits: HTMLElement | null = document.getElementById('suits')
         if (suits) {
-            suits.innerHTML = `${baseCardArr.join("")}`;
+            suits.innerHTML = `${baseCardArr.join('')}`
         }
 
         const resturtButton = document.getElementById('button-new-start')
@@ -58,7 +58,7 @@ export function PlayApp(level: number, appEl: Element) {
                 renderChoicePage(appEl)
             })
         }
-        
+
         if (suits) {
             let itemCards = suits.children
             const itemCardsArray = Array.from(itemCards)
@@ -68,21 +68,27 @@ export function PlayApp(level: number, appEl: Element) {
                     let cardIndex = Number(
                         (itemCard as HTMLElement).dataset.index,
                     )
-                    if (log && cardIndex && baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]) {
+                    if (
+                        log &&
+                        cardIndex &&
+                        baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]
+                    ) {
                         firstCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                         if (suits) {
-                            suits.innerHTML = `${baseCardArr.join("")}`;
+                            suits.innerHTML = `${baseCardArr.join('')}`
                         }
                         showCoverCard()
                         log = !log
-                    } else if (baseCardArr[cardIndex] != sortSuitCardArray[cardIndex])
-                    {                        secondCard = cardIndex
+                    } else if (
+                        baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]
+                    ) {
+                        secondCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                         if (suits) {
-                            suits.innerHTML = `${baseCardArr.join("")}`;
+                            suits.innerHTML = `${baseCardArr.join('')}`
                         }
                         showCoverCard()
                         compareCard(firstCard, secondCard)

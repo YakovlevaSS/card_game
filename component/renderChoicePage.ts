@@ -30,11 +30,11 @@ export function renderChoicePage(appEl: Element | null) {
             form.addEventListener('submit', (element) => {
                 element.preventDefault()
 
-                let levelPoints = document.querySelectorAll('.choice__item')
+                const levelPoints = document.querySelectorAll('.choice__item')
                 const levelPointsArray = Array.from(levelPoints)
-                for (let levelPoint of levelPointsArray) {
+                for (const levelPoint of levelPointsArray) {
                     if ((levelPoint as HTMLInputElement).checked) {
-                        let level: number = Number(
+                        const level: number = Number(
                             (levelPoint as HTMLInputElement).value,
                         )
                         PlayApp(level, appEl)
