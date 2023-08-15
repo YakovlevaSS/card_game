@@ -11,7 +11,8 @@
         "lint": "npm run lint:js && npm run lint:css",
         "prepare": "husky install",
         "build": "SET NODE_ENV='production' && webpack",
-        "start": "webpack-dev-server --open"
+        "start": "webpack-dev-server --open",
+        "lint:ts": "tsc --noEmit"
     },
     "repository": {
         "type": "git",
@@ -20,10 +21,12 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.4.0",
+        "@typescript-eslint/parser": "^6.4.0",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^5.0.1",
-        "eslint": "^8.46.0",
+        "eslint": "^8.47.0",
         "eslint-config-prettier": "^8.9.0",
         "eslint-plugin-prettier": "^5.0.0",
         "html-webpack-plugin": "^5.5.3",
@@ -35,6 +38,8 @@
         "stylelint": "^15.10.2",
         "stylelint-config-standard": "^34.0.0",
         "stylelint-prettier": "^4.0.2",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.1.6",
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^4.15.1"
