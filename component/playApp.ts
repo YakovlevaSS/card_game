@@ -24,7 +24,7 @@ export function PlayApp(level: number, appEl: Element) {
         .concat(sortSuitCardArray)
         .sort(() => Math.random() - 0.5)
 
-    let sortCoverCardArr = coverCardArr.slice(0, level)
+    const sortCoverCardArr = coverCardArr.slice(0, level)
 
     //Создаём массив, который будет показываться
     let baseCardArr: string[]
@@ -33,7 +33,7 @@ export function PlayApp(level: number, appEl: Element) {
 
     renderPlayingField(sortSuitCardArray, appEl)
 
-    let modalEl = document.getElementById('modal')
+    const modalEl = document.getElementById('modal')
 
     setTimeout(() => {
         id = counterTime(min, sec)
@@ -60,12 +60,12 @@ export function PlayApp(level: number, appEl: Element) {
         }
 
         if (suits) {
-            let itemCards = suits.children
+            const itemCards = suits.children
             const itemCardsArray = Array.from(itemCards)
 
             for (const itemCard of itemCardsArray) {
                 itemCard.addEventListener('click', () => {
-                    let cardIndex = Number(
+                    const cardIndex = Number(
                         (itemCard as HTMLElement).dataset.index,
                     )
                     if (
