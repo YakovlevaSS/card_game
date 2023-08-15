@@ -2,7 +2,7 @@ import { renderChoicePage } from './renderChoicePage'
 export function renderResult(
     appEl: Element,
     modalEl: HTMLElement | null,
-    gameProgress: Number,
+    gameProgress: number,
     //playingField: HTMLElement | null,
     currentDate: Date,
     combDate: string,
