@@ -24,7 +24,7 @@ export function PlayApp(level: number, appEl: Element) {
         .concat(sortSuitCardArray)
         .sort(() => Math.random() - 0.5)
 
-    let sortCoverCardArr = coverCardArr.slice(0, level)
+    const sortCoverCardArr = coverCardArr.slice(0, level)
 
     //Создаём массив, который будет показываться
     let baseCardArr: string[]
@@ -33,7 +33,7 @@ export function PlayApp(level: number, appEl: Element) {
 
     renderPlayingField(sortSuitCardArray, appEl)
 
-    let modalEl = document.getElementById('modal')
+    const modalEl = document.getElementById('modal')
 
     setTimeout(() => {
         id = counterTime(min, sec)
@@ -49,7 +49,7 @@ export function PlayApp(level: number, appEl: Element) {
     function showCoverCard() {
         const suits: HTMLElement | null = document.getElementById('suits')
         if (suits) {
-            suits.innerHTML = `${baseCardArr.join("")}`;
+            suits.innerHTML = `${baseCardArr.join('')}`
         }
 
         const resturtButton = document.getElementById('button-new-start')
@@ -58,31 +58,37 @@ export function PlayApp(level: number, appEl: Element) {
                 renderChoicePage(appEl)
             })
         }
-        
+
         if (suits) {
-            let itemCards = suits.children
+            const itemCards = suits.children
             const itemCardsArray = Array.from(itemCards)
 
             for (const itemCard of itemCardsArray) {
                 itemCard.addEventListener('click', () => {
-                    let cardIndex = Number(
+                    const cardIndex = Number(
                         (itemCard as HTMLElement).dataset.index,
                     )
-                    if (log && cardIndex && baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]) {
+                    if (
+                        log &&
+                        cardIndex &&
+                        baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]
+                    ) {
                         firstCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                         if (suits) {
-                            suits.innerHTML = `${baseCardArr.join("")}`;
+                            suits.innerHTML = `${baseCardArr.join('')}`
                         }
                         showCoverCard()
                         log = !log
-                    } else if (baseCardArr[cardIndex] != sortSuitCardArray[cardIndex])
-                    {                        secondCard = cardIndex
+                    } else if (
+                        baseCardArr[cardIndex] != sortSuitCardArray[cardIndex]
+                    ) {
+                        secondCard = cardIndex
                         gameProgress = --gameProgress
                         baseCardArr[cardIndex] = sortSuitCardArray[cardIndex]
                         if (suits) {
-                            suits.innerHTML = `${baseCardArr.join("")}`;
+                            suits.innerHTML = `${baseCardArr.join('')}`
                         }
                         showCoverCard()
                         compareCard(firstCard, secondCard)
