@@ -14,10 +14,11 @@
     "ignorePatterns": ["dist/", "node_modules/"],
     "rules": {
         "prettier/prettier": 0,
-        // "camelcase": ["error"],
+       "camelcase": ["error"],
         // "eqeqeq": ["error", "always"],
         "strict": ["error"],
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/no-var-requires": "off",
+        "selector-class-pattern": null
     },
     "root": true
 }
