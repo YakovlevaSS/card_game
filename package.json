@@ -8,11 +8,11 @@
         "format": "prettier --write ./",
         "lint:js": "eslint ./**/*.js",
         "lint:css": "stylelint ./**/*.scss",
-        "lint": "npm run lint:js && npm run lint:css",
         "prepare": "husky install",
         "build": "SET NODE_ENV='production' && webpack",
         "start": "webpack-dev-server --open",
         "lint:ts": "tsc --noEmit",
+        "lint": "npm run lint:ts && npm run lint:css",
         "test": "jest"
     },
     "repository": {
